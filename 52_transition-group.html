@@ -1,0 +1,48 @@
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<html>
+<head>
+<title>Transition group - Vue.js</title>
+<style>
+ul { margin:0; padding:0;}
+li { background:green; margin:10px 0; color:#fff; text-align:center; width:100%; -webkit-padding-start:0;}
+button {margin:0 auto; display:block; width:100%}
+        
+.v-enter {opacity:0;}
+.v-enter-active {transition:opacity .3s;}
+.v-leave-active {transition:opacity .3s; opacity:0;}
+.v-move {transition:transform 1s;}
+</style>
+</head>
+<body>
+    <div id="app">
+        <button @click="addItem">Add item</button>
+        <ul>
+        <transition-group>
+            <li v-for="(number, index) in numbers"
+                @click="removeItem(index)"
+                style="cursor:pointer"
+                :key="number">{{number}}</li>
+        </transition-group>
+        </ul>
+    </div>
+</body>
+
+<script>
+new Vue({
+    el:"#app",
+    data:{
+        show:false,
+        numbers:[1,2,3,4,5]
+    },
+    methods:{
+        addItem(){
+            const pos = Math.floor(Math.random()* this.numbers.length);
+            this.numbers.splice(pos, 0, this.numbers.length + 1);
+        },
+        removeItem(index){
+            this.numbers.splice(index, 1);
+        },
+    }
+});
+</script>
+</html>

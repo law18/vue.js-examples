@@ -1,0 +1,35 @@
+<html>
+<head>
+    <title>Axios - Vue.js</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</head>
+<body>
+    <div id="app">
+        <p>Data from json file:</p>
+        <ul>
+            <li v-for="item in users" :key="item.user_id">
+                {{item.name}} ({{item.user_id}}) - ${{item.price}}
+            </li>
+        </ul>
+    </div>
+</body>
+
+<script>
+new Vue({
+  el:"#app",
+  data(){
+    return {
+        users:null
+    }
+  },
+  mounted(){
+    axios
+      .get('53_axios.json')
+      .then(response => 
+        (this.users = response.data.data.users)
+      )
+  }
+});
+</script>
+</html>

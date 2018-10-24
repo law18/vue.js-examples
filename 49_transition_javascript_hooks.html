@@ -1,0 +1,66 @@
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<html>
+<head>
+    <title>Transition JavaScript Hooks - Vue.js</title>
+    <style>
+    .colorbox {width:100px;height:100px;background:lightgreen;}
+    </style>
+</head>
+<body>
+    <div id="app">
+        <button @click="show=!show">Load/Remove element </button>
+        <br />
+        Status: {{show}}
+        <br />
+        <transition
+            @before-enter="beforeEnter"
+            @enter="enter"
+            @after-enter="afterEnter"
+            @after-cancelled="enterCanacelled"
+            
+            @before-leave="beforeLeave"
+            @leave="leave"
+            @after-leave="afterLeave"
+            @leaveCancelled="leaveCancelled">
+        <div class="colorbox" v-if="show"></div>
+        </transition>
+    </div>
+</body>
+<script>
+new Vue({
+    el:"#app",
+    data:{
+        show:false
+    },
+    methods:{
+        beforeEnter(el){
+            console.log('beforeEnter');
+        },
+        enter(el, done){
+            console.log('enter');
+            done();
+        },
+        afterEnter(el){
+            console.log('afterEnter');
+        },
+        enterCanacelled(el){
+            console.log('enterCanacelled');
+        },
+        beforeLeave(el){
+            console.log('beforeLeave');
+        },
+        leave(el, done){
+            console.log('leave');
+            done();
+        },
+        afterLeave(el){
+            console.log('afterLeave');
+        },
+        leaveCancelled(el){
+            console.log('leaveCancelled');
+        },
+    }
+});
+</script>
+</html>
+

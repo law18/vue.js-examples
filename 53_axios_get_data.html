@@ -1,0 +1,29 @@
+<html>
+<head>
+    <title>Axios - Vue.js</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</head>
+<body>
+    <div id="app">
+        <button @click="getData">Click me</button>
+    </div>
+</body>
+
+<script>
+new Vue({
+    el:"#app",
+    data:{
+        "users":[]
+    },
+    methods:{
+        getData(){
+            axios.get('53_axios.json')
+                .then(function(response){
+                    console.log(response);
+                })
+        }
+    }
+});
+</script>
+</html>

@@ -1,0 +1,58 @@
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<html>
+<head>
+<title>Dynamic Components Animation - Vue.js</title>
+<style>
+body {padding:10px; margin:10px;}
+#red {background:red;}
+#orange {background:orange;}
+        
+.fade-enter {opacity:0;}
+.fade-enter-active {transition:opacity .3s;}
+.fade-leave-active {transition:opacity .3s; opacity:0;}
+</style>
+</head>
+<body>
+    <div id="app">
+        <button @click="template='red'">red</button>
+        <button @click="template='orange'">orange</button>
+        <br /><br />
+        <transition name="fade" mode="out-in">
+            <component :is="template"></component>
+        </transition>
+    </div>
+</body>
+<script>
+Vue.component("red",{
+    data(){
+        return {
+            "title":"red"
+        };
+    },
+    template:`<section id="red">
+              This is apple component
+              </section>`
+});
+
+Vue.component("orange",{
+    data(){
+        return {
+            "title":"orange"
+        };
+    },
+    template:`<section id="orange">
+              This is orange component
+              </section>`
+});
+
+new Vue({
+    el:"#app",
+    data:{
+        show:false,
+        template:"red",
+    },
+    methods:{
+    }
+});
+</script>
+</html>

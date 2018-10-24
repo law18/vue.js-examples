@@ -1,0 +1,52 @@
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<html>
+<head>
+<title>Transition with dynamic name- Vue.js</title>
+<style>
+section {background:#eee; padding:10px; margin:10px; width:150px;}
+.info {background:#bbceea;}
+.warn {background:#ffa09b;}
+
+.fade-enter {opacity:0;}
+.fade-enter-active { transition:opacity .3s;}
+.fade-leave-active { transition:opacity .3s; opacity:0;}
+
+.slide-enter {transform:translateY(0);}
+.slide-enter-active { transform:translateY(20px); }
+.slide-leave-active { transform:translateY(0); }
+.slide-leave {transform:translateY(20px);}
+</style>
+</head>
+<body>
+    <div id="app">
+        <button @click="show=!show">Click</button>
+        <br />
+        <transition name="fade">
+            <section v-if="show">{{alertAnimation}}</section>
+        </transition>
+        <transition name="fade" appear>
+            <section v-if="show">{{alertAnimation}}</section>
+        </transition>
+        <transition name="fade">
+            <section v-if="show">{{alertAnimation}}</section>
+        </transition>
+        <transition name="fade" mode="out-in">
+            <section v-if="show" key="info" class="info">Info</section>
+            <section v-else key="warn" class="warn">Warning</section>
+        </transition>
+    </div>
+</body>
+<script>
+new Vue({
+    el:"#app",
+    data:{
+        show:false,
+        alertAnimation:"fade"
+    }
+});
+
+// Reference: 
+// https://vuejs.org/v2/guide/transitions.html#Transitioning-Between-Elements
+</script>
+</html>
+

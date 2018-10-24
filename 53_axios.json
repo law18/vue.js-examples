@@ -1,0 +1,43 @@
+{
+    "success": true,
+    "data": {
+        "users": [{
+            "user_id":"D789",
+            "name":"Sam",
+            "origin": "JAI",
+            "destination": "BLR",
+            "price": 865,
+            "transfers": 0,
+            "airline": "HKEXPRESS",
+            "flight_number": 655,
+            "departure_at": "2017-06-03T18:20:00Z",
+            "return_at": "2017-06-07T08:30:00Z",
+            "expires_at": "2017-03-05T08:40:31Z"
+        },{
+            "user_id":"D810",
+            "name":"Sue",
+            "origin": "JPY",
+            "destination": "CP",
+            "price": 124,
+            "transfers": 0,
+            "airline": "LB",
+            "flight_number": 655,
+            "departure_at": "2018-05-03T18:20:00Z",
+            "return_at": "2018-05-17T08:30:00Z",
+            "expires_at": "2018-05-25T08:40:31Z"
+        },{
+            "user_id":"D800",
+            "name":"John",
+            "origin": "HKG",
+            "destination": "GUK",
+            "price": 189,
+            "transfers": 0,
+            "airline": "LB",
+            "flight_number": 655,
+            "departure_at": "2017-07-03T18:20:00Z",
+            "return_at": "2017-07-07T08:30:00Z",
+            "expires_at": "2017-07-05T08:40:31Z"
+        }
+        ]
+	}
+}
