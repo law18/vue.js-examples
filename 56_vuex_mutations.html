@@ -1,0 +1,39 @@
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vuex/3.0.1/vuex.js"></script>
+<html>
+<head>
+    <title>Vuex - Vue.js</title>
+</head>
+<body>
+    <div id="app">
+        <button @click="increse">{{counter}}</button>
+    </div>
+</body>
+
+<script>
+var store = new Vuex.Store({
+    state:{ // 1. State for show value "counter" at button.
+        counter:0 // 1. Mutations
+    },
+    mutations:{
+        increse(){
+            this.state.counter++; //2. Mutations
+        }
+    }
+});
+
+new Vue({
+    el:"#app",
+    computed:{ // 2. State for show value "counter" at button.
+        counter(){
+            return store.state.counter;
+        }
+    },
+    methods:{
+        increse(){
+            return store.commit("increse"); //3. Mutations
+        }
+    }
+});
+</script>
+</html>

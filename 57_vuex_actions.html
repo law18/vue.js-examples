@@ -1,0 +1,53 @@
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vuex/3.0.1/vuex.js"></script>
+<html>
+<head>
+    <title>Vuex actions - Vue.js</title>
+</head>
+<body>
+    <div id="app">
+        <com-a></com-a>
+    </div>
+</body>
+
+<script>
+const store = new Vuex.Store({
+  state: {
+    count: 0
+  },
+  mutations: {
+    increment (state) { //(1)
+      state.count++ //change state
+    }
+  },
+  actions: {
+    increment (context) {
+      context.commit('increment') //(2)
+    }
+  }
+});
+
+Vue.component("comA",{
+    computed:{
+        count(){
+            return store.state.count;
+        }
+    },
+    methods:{
+        increment(){
+            store.commit('increment'); //(3)
+        }
+    },
+    template:`<button @click="increment">{{count}}</button>`
+});
+
+new Vue({
+    el:"#app",
+    data:{
+        show:false
+    },
+    methods:{
+    }
+});
+</script>
+</html>

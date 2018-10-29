@@ -1,0 +1,59 @@
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vuex/3.0.1/vuex.js"></script>
+<html>
+<head>
+    <title>Vuex - Vue.js</title>
+</head>
+<body>
+    <div id="app">
+        <h1>Vuex</h1>
+        <hr />
+        <app-result></app-result>
+        <app-counter></app-counter>
+    </div>
+</body>
+<script>
+const store = new Vuex.Store({
+    state:{
+        counter:0,
+    },
+    getters:{
+        doubleCounter(state){
+            return store.state.counter * 2;
+        }
+    }
+});
+
+Vue.component("app-counter",{
+    methods:{
+        increment(){
+            store.state.counter++;
+        },
+        decrement(){
+            store.state.counter--;
+        }
+    },
+    template:`<div>
+            <button class="btn btn-primary" @click="increment">Increment</button>
+            <button class="btn btn-primary" @click="decrement">Decrement</button>
+        </div>`,
+});
+
+Vue.component("app-result",{
+    template:`
+        <div>
+            <p>Result is {{counter}}.</p>
+        </div>`,
+    computed:{
+        counter(){
+            return store.getters.doubleCounter;
+            //return store.state.counter;
+        }
+    }
+});
+
+new Vue({
+    el:"#app",
+});
+</script>
+</html>
